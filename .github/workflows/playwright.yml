@@ -20,7 +20,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: SLACK_TOKEN_ENV=$SLACK_TOKEN npx playwright test 
+      run:  SLACK_BOT_USER_OAUTH_TOKEN=xoxb-6329978339158-6360315920272-VVKVIGx9YXTSzSbNnfWSL9Yl npx playwright test
     - uses: actions/upload-artifact@v3
       if: always()
       with:
