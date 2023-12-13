@@ -19,11 +19,17 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run:  |
-        SLACK_BOT_USER_OAUTH_TOKEN=${{ secrets.SLACK_TOKEN }} npx playwright test --reporter=list,json,html
+      run:  SLACK_BOT_USER_OAUTH_TOKEN=${{ secrets.SLACK_TOKEN }} npx playwright test
+    - name: update report
+      run: |
         git config --local user.email "actions@github.com"
         git config --local user.name "GitHub Actions"
-        git add path/to/generated/report.html  # Add only the report file
+        git add .
         git commit -m "Update HTML report"
         git push origin main
-    
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30
