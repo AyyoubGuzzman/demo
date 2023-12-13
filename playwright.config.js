@@ -21,7 +21,7 @@ module.exports = defineConfig({
           meta: [
             {
                 key: 'HTML Results',
-                value: '<https://demo-8w30dr2ey-ayyoubguzzman.vercel.app|📊>',
+                value: '<https://ayyoubguzzman.github.io/demo/|📊>',
             },
           ],
         },
