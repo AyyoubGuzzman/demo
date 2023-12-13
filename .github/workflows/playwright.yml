@@ -8,6 +8,8 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      SLACK_TOKEN: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
@@ -18,7 +20,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: LACK_TOKEN=https://hooks.slack.com/services/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 npx playwright test
+      run: npx playwright test --token SLACK_TOKEN
     - uses: actions/upload-artifact@v3
       if: always()
       with:
