@@ -23,14 +23,14 @@ jobs:
     - name: Check for changes in report
       id: check_changes
       run: |
-        git diff --quiet HEAD test/playwright-report/index.html || echo "::set-output name=changed::true"
+        git diff --quiet HEAD playwright-report/index.html || echo "::set-output name=changed::true"
 
     - name: Update report
       if: steps.check_changes.outputs.changed == 'true'
       run: |
         git config --local user.email "actions@github.com"
         git config --local user.name "GitHub Actions"
-        git add test/playwright-report/index.html
+        git add playwright-report/index.html
         git commit -m "Update HTML report"
         git push origin main
     - uses: actions/upload-artifact@v3
