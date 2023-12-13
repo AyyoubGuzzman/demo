@@ -15,7 +15,7 @@ module.exports = defineConfig({
       [
         "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
         {
-          slackWebHookUrl: `${process.env.SLACK_TOKEN}`,
+          slackWebHookUrl: `${process.env.SLACK_TOKEN_ENV}`,
           channels: ["dev"], // provide one or more Slack channels
           sendResults: "always", // "always" , "on-failure", "off"
           meta: [
