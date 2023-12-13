@@ -8,6 +8,7 @@ jobs:
   test:
     permissions:
       id-token: write
+      pages: write
     timeout-minutes: 60
     runs-on: ubuntu-latest
 
