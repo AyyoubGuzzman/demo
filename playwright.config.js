@@ -16,7 +16,7 @@ module.exports = defineConfig({
         "./node_modules/playwright-slack-report/dist/src/SlackReporter.js",
         {
           slackOAuthToken: `${process.env.SLACK_BOT_USER_OAUTH_TOKEN}`,
-          channels: ["dev"], // provide one or more Slack channels
+          channels: ["e2e-playwright"], // provide one or more Slack channels
           sendResults: "always", // "always" , "on-failure", "off"
           meta: [
             {
