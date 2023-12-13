@@ -18,7 +18,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: LACK_TOKEN=SLACK_WEBHOOK_URL npx playwright test
+      run: LACK_TOKEN=https://hooks.slack.com/services/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 npx playwright test
     - uses: actions/upload-artifact@v3
       if: always()
       with:
