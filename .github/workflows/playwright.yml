@@ -20,19 +20,6 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       run:  SLACK_BOT_USER_OAUTH_TOKEN=${{ secrets.SLACK_TOKEN }} npx playwright test
-    - name: Check for changes in report
-      id: check_changes
-      run: |
-        git diff --quiet HEAD playwright-report/index.html || echo "::set-output name=changed::true"
-
-    - name: Update report
-      if: steps.check_changes.outputs.changed == 'true'
-      run: |
-        git config --local user.email "actions@github.com"
-        git config --local user.name "GitHub Actions"
-        git add playwright-report/index.html
-        git commit -m "Update HTML report"
-        git push origin main
     - uses: actions/upload-artifact@v3
       if: always()
       with:
