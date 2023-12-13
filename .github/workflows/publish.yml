@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+    - main # Push events on main branch
+
+jobs:
+  publish:
+    permissions:
+      id-token: write
+      pages: write
+    runs-on: ubuntu-20.04
+    steps:
+       - name: Setup Pages
+      uses: actions/configure-pages@v2
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+          # Upload entire repository
+        path: playwright-report/
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
