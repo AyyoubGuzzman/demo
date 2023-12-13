@@ -21,7 +21,7 @@ module.exports = defineConfig({
           meta: [
             {
                 key: 'HTML Results',
-                value: '<playwright-report|📊>',
+                value: '<https://demo-8w30dr2ey-ayyoubguzzman.vercel.app|📊>',
             },
           ],
         },
